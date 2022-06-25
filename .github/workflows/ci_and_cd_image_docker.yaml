@@ -10,6 +10,7 @@ on:
 jobs:
   push_to_registry:
     name: Build and push Docker image to Docker Hub
+    if: ${{ github.ref == 'refs/tags/v0.*' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -23,10 +24,10 @@ jobs:
           repository: jamal008/bmi-cal
           tag_with_ref: true 
           tag_with_sha: false 
-          tags: latest    
+          tags: latest
   Deploy_imagas:
-    if: ${{ github.ref == 'ref/head/master' }}
     name: Setup env variable on server
+    if: ${{ github.ref == 'ref/head/master' }}
     runs-on: ubuntu-latest
     steps:
     - name: test variable github tag_with_ref
