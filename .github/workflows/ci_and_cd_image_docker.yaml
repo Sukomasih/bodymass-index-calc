@@ -22,7 +22,7 @@ jobs:
           tag_with_sha: false 
           tags: latest
   Deploy_imagas:
-    name: Setup env variable on server
+    name: Setup env variable on server and Deploy to Docker compose
     needs: [ push_to_registry ]
     runs-on: ubuntu-latest
     steps:
