@@ -2,8 +2,6 @@ name: Build and push Docker image upon tags
 
 on:
   push:
-    branches:
-      - "master"
     tags:
       - v*
 
@@ -27,23 +25,22 @@ jobs:
           tags: latest
   Deploy_imagas:
     name: Setup env variable on server
-#    if: ${{ github.ref == 'ref/head/master' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: test variable github tag_with_ref
       run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-    - name: Test
-      run: |
-        echo $RELEASE_VERSION
-        echo ${{ env.RELEASE_VERSION }}
-
-    # - name: executing remote ssh commands using password
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.SSH_HOST }}
-    #     username: ${{ secrets.SSH_USERNAME }}
-    #     key: ${{ secrets.SSH_KEY }}
-    #     port: ${{ secrets.SSH_PORT }}
-    #     script: |
-    #       echo $GITHUB_REF_NAME
+    # - name: Test
+    #   run: |
+    #     echo $RELEASE_VERSION
+    #     echo ${{ env.RELEASE_VERSION }}
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          echo ${{ env.RELEASE_VERSION }}
+          export TAG=${{ env.RELEASE_VERSION }}
