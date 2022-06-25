@@ -43,6 +43,7 @@ jobs:
       with:
         remote_docker_host: ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}
         ssh_private_key: ${{ secrets.SSH_KEY }}
+        ssh_public_key: ${{ secrets.SSH_KEY_PUBLIC }}
         deployment_mode: docker-compose
         deploy_path: ${{ secrets.SSH_PATH }}
         stack_file_name: docker-compose.yaml
