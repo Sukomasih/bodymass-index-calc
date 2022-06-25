@@ -34,8 +34,6 @@ storage_config:
 ruler:
   wal:
     dir: /tmp/loki/wal
-  wal_cleaner:
-    period: 3d
 
 limits_config:
   enforce_metric_name: false
