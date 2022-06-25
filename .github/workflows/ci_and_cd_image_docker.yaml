@@ -42,5 +42,5 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          echo ${{ env.RELEASE_VERSION }}
           export TAG=${{ env.RELEASE_VERSION }}
+          echo $TAG
