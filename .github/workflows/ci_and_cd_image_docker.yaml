@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
@@ -26,8 +25,8 @@ jobs:
     name: Setup env variable on server
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Setup varibale
-      uses: actions/checkout@v2
       run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
     - name: Add varibale tag version on server
       uses: appleboy/ssh-action@master
