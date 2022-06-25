@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  grafana:
+    image: grafana/grafana:v8.2.6
+    container_name: grafana
+    volumes:
+    - ./config/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+    ports:
+    - "3000:3000"
+    networks:
+      - tools
+
+  loki:
+    image: grafana/loki:2.5.0
+    container_name: loki
+    volumes:
+      - ./config/loki.yaml:/etc/config/loki.yaml
+    entrypoint:
+      - /usr/bin/loki
+      - -config.file=/etc/config/loki.yaml
+    ports:
+      - "3100:3100"
+    networks:
+      - tools
+
+networks:
+  tools:
+    external: true
