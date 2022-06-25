@@ -27,7 +27,7 @@ jobs:
           tags: latest
   Deploy_imagas:
     name: Setup env variable on server
-    if: ${{ github.ref == 'ref/head/master' }}
+#    if: ${{ github.ref == 'ref/head/master' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
