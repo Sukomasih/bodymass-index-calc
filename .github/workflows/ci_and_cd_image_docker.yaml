@@ -10,7 +10,7 @@ on:
 jobs:
   push_to_registry:
     name: Build and push Docker image to Docker Hub
-    if: ${{ github.ref == 'refs/tags/v*' }}
+    if: ${{ github.ref == 'refs/tags/*' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -32,7 +32,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: test variable github tag_with_ref
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v*}" >> $GITHUB_ENV
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/*}" >> $GITHUB_ENV
     - name: Test
       run: |
         echo $RELEASE_VERSION
