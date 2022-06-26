@@ -3,6 +3,7 @@ version: "3"
 services:
   bmi-cal:
     image: "jamal008/bmi-cal:${TAG}"
+    restart: unless-stopped
     container_name: bmi-cal
     ports:
       - "80:80"
