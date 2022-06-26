@@ -36,6 +36,9 @@ services:
     image: prom/prometheus:latest
     restart: unless-stopped
     container_name: prometheus
+    depends_on:
+      - docker_exporter
+      - blackbox_exporter
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
