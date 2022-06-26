@@ -12,3 +12,4 @@ services:
       options:
         loki-url: http://localhost:3100/loki/api/v1/push
         loki-external-labels: job=dockerlogs,container_name={{.Name}}
+        keep-file: 'true'

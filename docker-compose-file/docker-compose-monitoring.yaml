@@ -20,6 +20,7 @@ services:
     image: grafana/loki:2.5.0
     restart: unless-stopped
     container_name: loki
+    user: "0"
     volumes:
       - ./config/loki.yaml:/etc/config/loki.yaml
       - loki_data:/tmp/loki
