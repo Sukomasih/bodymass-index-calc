@@ -48,7 +48,7 @@ services:
       - 9090:9090
     networks:
       - tools
-      
+
   docker_exporter:
     image: prometheusnet/docker_exporter
     restart: always
@@ -59,7 +59,19 @@ services:
       - 9417:9417
     networks:
       - tools
-
+    
+  blackbox_exporter:
+    image: prom/blackbox-exporter:master
+    restart: always
+    container_name: blackbox_exporter
+    volumes:
+      - ./config/blackbox.yml:/config/blackbox.yml
+    command:
+      - '--config.file=/config/blackbox.yml'
+    ports:
+      - 9115:9115
+    networks:
+      - tools
 
 volumes:
   prometheus_data: {}
