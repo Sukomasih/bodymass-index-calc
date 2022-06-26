@@ -48,6 +48,18 @@ services:
       - 9090:9090
     networks:
       - tools
+      
+  docker_exporter:
+    image: prometheusnet/docker_exporter
+    restart: always
+    container_name: docker_exporter
+    volumes:
+      -  /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9417:9417
+    networks:
+      - tools
+
 
 volumes:
   prometheus_data: {}
