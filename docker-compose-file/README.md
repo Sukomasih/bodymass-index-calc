@@ -12,7 +12,9 @@ Running service loki, prometheus, grafana, docker exporter, and blackbox exporte
 - `docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions` \
 Install logging driver loki in docker
 - `docker plugin ls` \
-check status logging driver, after install driver
+Check status logging driver, after install driver
+- `export TAG=v0.1.5` \
+Add variable tag in env OS for use docker-compose pull images
 - `docker compose -f docker-compose.yaml up -d` \
 Running BMI calculator service
 
