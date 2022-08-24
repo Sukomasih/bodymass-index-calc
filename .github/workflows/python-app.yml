@@ -2,8 +2,7 @@ name: Build and push Docker image upon tags
 
 on:
   push:
-    tags:
-      - v*
+
 
 jobs:
   push_to_registry:
