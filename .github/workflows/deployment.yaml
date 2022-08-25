@@ -39,4 +39,4 @@ jobs:
         script: |
           export TAG=${{ env.RELEASE_VERSION }}
           echo $TAG
-          cd  ${{ secrets.SSH_PATH }} && docker compose docker-compose.yaml up -d
+          cd  ${{ secrets.SSH_PATH }} && sudo docker compose -f docker-compose.yaml up -d
