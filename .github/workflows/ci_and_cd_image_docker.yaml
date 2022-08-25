@@ -17,7 +17,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: jamal008/bmi-cal
+          repository: masfer/intrajasa
           tag_with_ref: true 
           tag_with_sha: false 
           tags: latest
@@ -39,4 +39,4 @@ jobs:
         script: |
           export TAG=${{ env.RELEASE_VERSION }}
           echo $TAG
-          cd  ${{ secrets.SSH_PATH }} && docker compose -f docker-compose.yaml up -d
+          cd  ${{ secrets.SSH_PATH }} && sudo docker compose -f docker-compose.yaml up -d
