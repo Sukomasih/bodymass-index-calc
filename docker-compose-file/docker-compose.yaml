@@ -2,7 +2,7 @@ version: "3"
 
 services:
   bmi-cal:
-    image: "jamal008/bmi-cal:${TAG}"
+    image: "masfer/intrajasa:${TAG}"
     restart: unless-stopped
     container_name: bmi-cal
     ports:
