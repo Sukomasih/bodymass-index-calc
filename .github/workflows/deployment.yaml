@@ -5,6 +5,7 @@ on:
     tags:
       - v*
 
+
 jobs:
   push_to_registry:
     name: Build and push Docker image to Docker Hub
